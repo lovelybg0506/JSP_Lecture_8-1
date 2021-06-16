@@ -58,16 +58,16 @@ public class MemberDAO {
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
-				MemberBean bean=new MemberBean();
-				bean.setId(rs.getString(1));
-				bean.setPass1(rs.getString(2));
-				bean.setEmail(rs.getString(3));
-				bean.setTel(rs.getString(4));
-				bean.setHobby(rs.getString(5));
-				bean.setJob(rs.getString(6));
-				bean.setAge(rs.getString(7));
-				bean.setInfo(rs.getString(8));
-				v.add(bean);
+				MemberBean mbean=new MemberBean();
+				mbean.setId(rs.getString(1));
+				mbean.setPass1(rs.getString(2));
+				mbean.setEmail(rs.getString(3));
+				mbean.setTel(rs.getString(4));
+				mbean.setHobby(rs.getString(5));
+				mbean.setJob(rs.getString(6));
+				mbean.setAge(rs.getString(7));
+				mbean.setInfo(rs.getString(8));
+				v.add(mbean);
 			}
 			
 			conn.close();
@@ -80,7 +80,7 @@ public class MemberDAO {
 	}
 	
 	public MemberBean oneSelectMember(String id) {
-		MemberBean bean=new MemberBean();
+		MemberBean mbean=new MemberBean();
 		
 		try {
 			getcon();
@@ -91,14 +91,14 @@ public class MemberDAO {
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-				bean.setId(rs.getString(1));
-				bean.setPass1(rs.getString(2));
-				bean.setEmail(rs.getString(3));
-				bean.setTel(rs.getString(4));
-				bean.setHobby(rs.getString(5));
-				bean.setJob(rs.getString(6));
-				bean.setAge(rs.getString(7));
-				bean.setInfo(rs.getString(8));
+				mbean.setId(rs.getString(1));
+				mbean.setPass1(rs.getString(2));
+				mbean.setEmail(rs.getString(3));
+				mbean.setTel(rs.getString(4));
+				mbean.setHobby(rs.getString(5));
+				mbean.setJob(rs.getString(6));
+				mbean.setAge(rs.getString(7));
+				mbean.setInfo(rs.getString(8));
 			}
 			
 			conn.close();
@@ -106,7 +106,49 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 		
-		return bean;
+		return mbean;
+	}
+	
+	public void updateMember(MemberBean bean) {
+		getcon();
+		try {
+			String sql="update memberInfo set email=?,tel=? where id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getEmail());
+			pstmt.setString(2, bean.getTel());
+			pstmt.setString(3, bean.getId());
+
+			pstmt.executeUpdate();
+			conn.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String getPass1(String id) {
+		String pass="";
+		try {
+			getcon();
+			String sql="select pass1 from memberInfo where id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pass=rs.getString(1);
+			}
+			
+			conn.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return pass;
+	}
+
+	public void deleteMember(String id) {
+		
 	}
 	
 }

@@ -33,6 +33,6 @@
   	//회원 가입이 되었다면 회원 정보를 보여주는 페이지로 이동
   	response.sendRedirect("MemberList.jsp");
 %>
- 	Join OK
+ 	OK MemberJoinProc !! 
 </body>
 </html>

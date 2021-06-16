@@ -25,16 +25,16 @@
 		</tr>
 		<%
 			for(int i=0;i<vec.size();i++){
-				MemberBean bean=vec.get(i);
+				MemberBean mbean=vec.get(i);
 		%>
 			<tr height="50">
 				<td align="center" width="150">
-					<a href="MemberInfo.jsp?id=<%=bean.getId()%>">
-						<%=bean.getId()%></a>
+					<a href="MemberInfo.jsp?id=<%=mbean.getId()%>">
+						<%=mbean.getId()%></a>
 				</td>
-				<td align="center" width="250"><%=bean.getEmail()%></td>
-				<td align="center" width="200"><%=bean.getTel()%></td>
-				<td align="center" width="200"><%=bean.getHobby()%></td>
+				<td align="center" width="250"><%=mbean.getEmail()%></td>
+				<td align="center" width="200"><%=mbean.getTel()%></td>
+				<td align="center" width="200"><%=mbean.getHobby()%></td>
 			</tr>
 		<%
 			}

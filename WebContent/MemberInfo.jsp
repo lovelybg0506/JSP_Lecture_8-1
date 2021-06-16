@@ -1,3 +1,5 @@
+<%@page import="model.MemberDAO"%>
+<%@page import="model.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,7 +11,51 @@
 <body>
 	<%
 		String id = request.getParameter("id");
-		
+		MemberDAO mdao = new MemberDAO();
+		MemberBean mbean=mdao.oneSelectMember(id);
 	%>
+<div align="center">
+<h2>개인 회원 보기</h2>
+	<table width="400" border="1">
+		<tr height="50">
+			<td align="center" width="150">아이디</td>
+			<td width="250"><%=mbean.getId()%></td>
+		</tr>
+		<tr height="50">
+			<td align="center" width="150">이메일</td>
+			<td width="250"><%=mbean.getEmail()%></td>
+		</tr>
+		<tr height="50">
+			<td align="center" width="150">전화</td>
+			<td width="250"><%=mbean.getTel()%></td>
+		</tr>
+		<tr height="50">
+			<td align="center" width="150">취미</td>
+			<td width="250"><%=mbean.getHobby()%></td>
+		</tr>
+		<tr height="50">
+			<td align="center" width="150">직업</td>
+			<td width="250"><%=mbean.getJob()%></td>
+		</tr>
+		<tr height="50">
+			<td align="center" width="150">나이</td>
+			<td width="250"><%=mbean.getAge()%></td>
+		</tr>
+		<tr height="50">
+			<td align="center" width="150">정보</td>
+			<td width="250"><%=mbean.getInfo()%></td>
+		</tr>
+
+		<tr>	
+			<td align="center" colspan="2">
+			<button onclick="location.href='MemberUpdateForm.jsp?id=<%=mbean.getId() %>'">회원 수정</button>
+			<button onclick="location.href='MemberDeleteForm.jsp?id=<%=mbean.getId() %>'">회원 삭제</button>
+			<button onclick="location.href='MemberList.jsp'">목록 보기</button>
+			<button onclick="location.href='MemberJoin.html'">회원 가입</button>			
+			</td>
+		</tr>
+	</table>
+</div>
+
 </body>
 </html>
