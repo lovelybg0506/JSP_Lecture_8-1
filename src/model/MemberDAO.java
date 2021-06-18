@@ -148,7 +148,19 @@ public class MemberDAO {
 	}
 
 	public void deleteMember(String id) {
+		getcon();
 		
+		try {
+			String sql="delete from memberInfo where id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 }

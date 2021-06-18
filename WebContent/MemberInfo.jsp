@@ -46,12 +46,12 @@
 			<td width="250"><%=mbean.getInfo()%></td>
 		</tr>
 
-		<tr>	
+		<tr height="50">	
 			<td align="center" colspan="2">
-			<button onclick="location.href='MemberUpdateForm.jsp?id=<%=mbean.getId() %>'">회원 수정</button>
-			<button onclick="location.href='MemberDeleteForm.jsp?id=<%=mbean.getId() %>'">회원 삭제</button>
-			<button onclick="location.href='MemberList.jsp'">목록 보기</button>
-			<button onclick="location.href='MemberJoin.html'">회원 가입</button>			
+			<button type="button" onclick="location.href='MemberUpdateForm.jsp?id=<%=mbean.getId() %>'">회원 수정</button>
+			<button type="button" onclick="location.href='MemberDeleteForm.jsp?id=<%=mbean.getId() %>'">회원 삭제</button>
+			<button type="button" onclick="location.href='MemberList.jsp'">목록 보기</button>
+			<button type="button" onclick="location.href='MemberJoin.html'">회원 가입</button>			
 			</td>
 		</tr>
 	</table>

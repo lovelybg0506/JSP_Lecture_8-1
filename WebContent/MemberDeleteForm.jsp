@@ -25,7 +25,7 @@
 				<td align="center" colspan="2">
 				<input type="hidden" name="id" value="<%=request.getParameter("id")%>">
 				<input type="submit" value="회원 삭제하기">&nbsp;&nbsp;
-				<button onclick="location.href='MemberList.jsp'">회원 전체 보기</button>
+				<button type="button" onclick="location.href='MemberList.jsp'">회원 전체 보기</button>
 			</tr>
 			
 		</table>
